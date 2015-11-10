@@ -20,7 +20,7 @@ defmodule ElixirExamples.Mixfile do
      homepage_url: "https://github.com/raniemi/elixir_examples",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     test_coverage: [tool: Coverex.Task, log: :debug],
+     test_coverage: [tool: Coverex.Task, log: :debug, coveralls: true],
      deps: deps]
   end
 
