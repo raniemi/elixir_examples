@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/raniemi/elixir_examples.svg?branch=master)](https://travis-ci.org/raniemi/elixir_examples)
+
 Elixir Examples
 ===============
 
