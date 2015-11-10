@@ -1,4 +1,4 @@
-defmodule ElixirExamples.StringTypes do
+defmodule ElixirExamples.StringTypesTest do
 
   use ExUnit.Case, async: true
 

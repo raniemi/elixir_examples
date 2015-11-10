@@ -1,4 +1,4 @@
-defmodule ElixirExamples.BasicTypes do
+defmodule ElixirExamples.BasicTypesTest do
 
   use ExUnit.Case, async: true
 
@@ -47,6 +47,11 @@ defmodule ElixirExamples.BasicTypes do
   test "ranges" do
     my_range = 1..10
     assert 1..10 == my_range
+
+    assert 5 in my_range
+    assert !25 in my_range
+
+    assert [1, 2, 3] == Enum.filter(1..3, fn(x) -> true end)
   end
 
 end

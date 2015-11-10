@@ -1,4 +1,4 @@
-defmodule ElixirExamples.ComplexTypes do
+defmodule ElixirExamples.ComplexTypesTest do
 
   use ExUnit.Case, async: true
 
