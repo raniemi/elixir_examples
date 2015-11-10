@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/raniemi/elixir_examples.svg?branch=master)](https://travis-ci.org/raniemi/elixir_examples)
+[![Coverage Status](https://coveralls.io/repos/raniemi/elixir_examples/badge.svg?branch=master&service=github)](https://coveralls.io/github/raniemi/elixir_examples?branch=master)
 
 Elixir Examples
 ===============
