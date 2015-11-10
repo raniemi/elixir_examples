@@ -1,0 +1,9 @@
+/_build
+/deps
+erl_crash.dump
+*.ez
+/cover
+/doc
+/docs
+coveralls.json
+*.swp
