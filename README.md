@@ -8,7 +8,11 @@ This git repository is used (by me) to document things I have learned about the 
 
 ### Prerequisites
 
-If you want to use this then you'll need to [install](http://elixir-lang.org/install.html) [Elixir](http://elixir-lang.org/) first.
+If you want to use this then you'll need to either [install](http://elixir-lang.org/install.html) [Elixir](http://elixir-lang.org/) first or use the [Docker Toolbox](https://www.docker.com/docker-toolbox).  If you decide to use docker then after installing the toolbox you will need to build the docker image as follows:
+
+```console
+docker build -t raniemi/elixir_examples .
+```
 
 ### Reference
 
@@ -19,21 +23,31 @@ Links that I have found to be helpful:
 
 ### Background
 
-This Elixir project was created using [mix](http://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html):
+This Elixir project was originally created using [mix](http://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html):
 ```console
 mix new elixir_examples --module ElixirExamples
 ```
-
 ### Usage
 
 To use this repository:
 ```console
 git clone https://github.com/raniemi/elixir_examples.git
 cd elixir_examples
+```
+
+Then you can either use mix directly:
+```console
 mix do deps.get, compile
 ```
 
-Run tests using:
+Or if you want to use the docker container then prefix the same command with ./docker-run.  For example:
+```console
+./docker-run mix do deps.get, compile
+```
+
+### Helpful Commands
+
+Run tests:
 ```console
 mix test
 ```
@@ -41,11 +55,13 @@ mix test
 Run tests with code coverage:
 ```console
 mix test --cover
+open cover/modules.html (OSX)
 ```
 
 Generate documentation:
 ```console
 MIX_ENV=docs mix docs
+open doc/index.html (OSX)
 ```
 
 Hints on improving inline docs
