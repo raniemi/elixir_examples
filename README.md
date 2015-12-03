@@ -64,9 +64,19 @@ MIX_ENV=docs mix docs
 open doc/index.html (OSX)
 ```
 
-Hints on improving inline docs
+Hints on improving inline docs:
 ```console
 MIX_ENV=docs mix inch
+```
+
+List of code analysis issues grouped by files:
+```console
+mix credo list
+```
+
+Code linter:
+```console
+mix dogma
 ```
 
 ### TODO
