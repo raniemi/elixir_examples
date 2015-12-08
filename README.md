@@ -42,14 +42,14 @@ Or alternatively:
 ./bin/docker-build
 ```
 
-Following on the earlier mix example, all you have to do to use [Docker](https://www.docker.com/) is to prefix the same command with `./bin/docker-run`.  For example:
+Following on the earlier mix example, all you have to do to use the tools installed on [Docker](https://www.docker.com/) is to prefix the same command with `./bin/docker-run`.  For example:
 ```console
 ./bin/docker-run mix do deps.get, compile
 ```
 
 ### Helpful Commands
 
-As I started working with this project and docker, I quickly became tired typing `docker-run` prefix constantly (think `bundle exec`), knowing when to specify a MIX_ENV, and having to run post-commands after the fact (i.e. I just ran code coverage and so I now want to see the HTML report).  As a means of convenience, I created some bash scripts in the `mix/` directory. For example: 
+As I started working with this project and docker, I quickly became tired typing `docker-run` the prefix constantly (think `bundle exec`), knowing when to specify a MIX_ENV, and having to run post-commands after the fact (i.e. I just ran code coverage and so I now want to see the HTML report).  As a means of convenience, I created some bash scripts in the `mix/` directory. For example: 
 
 Run tests (with code coverage):
 ```console
