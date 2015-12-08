@@ -1,0 +1,3 @@
+#!/bin/bash
+BIN_DIR=$PWD/bin
+$BIN_DIR/docker-run mix credo list

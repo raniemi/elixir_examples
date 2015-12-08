@@ -1,8 +1,0 @@
-#!/bin/bash
-ARGS=$@
-OWNER=raniemi
-PROJECT=elixir_examples
-SRC_DIR=/code
-
-REPOSITORY=$OWNER/$PROJECT
-docker run -it --rm --name $PROJECT -v "$PWD":$SRC_DIR/$PROJECT -w $SRC_DIR/$PROJECT $REPOSITORY true && bash -c "$ARGS" 

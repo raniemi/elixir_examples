@@ -64,7 +64,10 @@ defmodule ElixirExamples.ComplexTypesTest do
     assert %{ first: "John", last: "Roe" } == %{ my_map | last: "Roe" }
 
     assert %{ first: "John", last: "Doe", age: 50 } == Map.put(my_map, :age, 50)
-    assert_raise ArgumentError, fn ->
+
+    # NOTE: this originally worked fine when Elixir was installed locally via brew (version difference?)
+    #assert_raise ArgumentError, fn ->
+    assert_raise KeyError, fn ->
       %{ my_map | age: 50 }
     end
 

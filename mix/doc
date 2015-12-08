@@ -1,0 +1,6 @@
+#!/bin/bash
+BIN_DIR=$PWD/bin
+$BIN_DIR/docker-run MIX_ENV=docs mix docs
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  open doc/index.html
+fi

@@ -1,0 +1,6 @@
+#!/bin/bash
+BIN_DIR=$PWD/bin
+$BIN_DIR/docker-run mix test --cover
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  open cover/modules.html
+fi

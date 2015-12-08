@@ -1,0 +1,6 @@
+#!/bin/bash
+OWNER=raniemi
+PROJECT=elixir_examples
+REPOSITORY=$OWNER/$PROJECT
+
+docker build -t $REPOSITORY .
