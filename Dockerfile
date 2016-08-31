@@ -17,17 +17,18 @@ ENV LC_ALL en_US.UTF-8
 RUN apt-get update && apt-get upgrade -y && apt-get install -y curl wget git make
 
 # download and install Erlang package
-RUN wget http://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb \
- && dpkg -i erlang-solutions_1.0_all.deb \
+ENV ERLANG_SOLUTIONS erlang-solutions_1.0_all.deb
+RUN wget http://packages.erlang-solutions.com/$ERLANG_SOLUTIONS \
+ && dpkg -i $ERLANG_SOLUTIONS \
  && apt-get update
 
 # install erlang from package
 RUN apt-get install -y erlang erlang-ssl erlang-inets \
- && rm erlang-solutions_1.0_all.deb \
+ && rm $ERLANG_SOLUTIONS \
  && apt-get clean
 
 # install elixir from source
-ENV ELIXIR_VERSION 1.1.1
+ENV ELIXIR_VERSION 1.3.2
 RUN git clone https://github.com/elixir-lang/elixir.git && cd elixir && git checkout v$ELIXIR_VERSION && make
 ENV PATH $PATH:/elixir/bin
 

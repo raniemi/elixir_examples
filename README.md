@@ -44,7 +44,7 @@ Or alternatively:
 
 Following on the earlier mix example, all you have to do to use the tools installed on [Docker](https://www.docker.com/) is to prefix the same command with `./bin/docker-run`.  For example:
 ```console
-./bin/docker-run mix do deps.get, compile
+./bin/docker-run mix do clean, deps.get, compile
 ```
 
 ### Helpful Commands

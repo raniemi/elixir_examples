@@ -4,7 +4,7 @@ defmodule ElixirExamples.Mixfile do
   def project do
     [app: :elixir_examples,
      version: "0.0.1",
-     elixir: "~> 1.0",
+     elixir: "~> 1.3",
 
      # Hex
      description: description,
@@ -42,12 +42,9 @@ defmodule ElixirExamples.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:poison, "~> 1.2", only: :docs},           # (inch_ex) Why no transitive dep resolve when running in docker?
-      {:inch_ex, only: :docs},                    # Inline docs improvement suggestor
-      {:earmark, "~> 0.1", only: :docs},          # Markdown parser
+      {:inch_ex, ">= 0.0.0", only: :docs},        # Inline docs improvement suggestor
       {:ex_doc, "~> 0.10", only: :docs},          # HTML documentation generator
       {:coverex, "~> 1.4.1", only: :test},        # Code coverage
-      {:bunt, "~> 0.1.4", only: [:dev, :test]},   # (credo) Why no transitive dep resolve when running in docker?
       {:credo, "~> 0.1.10", only: [:dev, :test]}, # Code analysis
       {:dogma, "~> 0.0.11", only: :dev}           # Code linter
     ]
