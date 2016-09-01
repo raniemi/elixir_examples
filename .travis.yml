@@ -5,13 +5,19 @@ services:
 
 before_install:
   - ./bin/docker-build
-  - ./bin/docker-run "mix local.rebar --force"
+  - ./bin/docker-run "mix local.rebar --force; mix local.hex --force"
 
 script:
   - ./mix/test-cover
 
 after_script:
   - ./bin/docker-run "mix deps.get --only docs; MIX_ENV=docs mix inch.report"
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push raniemi/elixir_examples;
+    fi
 
 notifications:
   recipients:
