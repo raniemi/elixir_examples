@@ -1,8 +1,9 @@
 #!/bin/bash
+set -e
 ARGS=$@
 OWNER=raniemi
 PROJECT=elixir_examples
-SRC_DIR=/usr/local/src/elixir_examples
+SRC_DIR=/usr/local/src/$PROJECT
 
 REPOSITORY=$OWNER/$PROJECT
 CONTAINER_HOME=$SRC_DIR/$PROJECT

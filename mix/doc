@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 BIN_DIR=$PWD/bin
 "$BIN_DIR/docker-run" "MIX_ENV=docs mix docs"
 if [[ "$OSTYPE" == "darwin"* ]]; then

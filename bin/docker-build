@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 OWNER=raniemi
 PROJECT=elixir_examples
 REPOSITORY=$OWNER/$PROJECT

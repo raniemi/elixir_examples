@@ -1,3 +1,4 @@
 #!/bin/bash
+set -e
 BIN_DIR=$PWD/bin
 "$BIN_DIR/docker-run" "mix credo list"
