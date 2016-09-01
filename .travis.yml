@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t raniemi/elixir_examples
+  - ./bin/docker-build
   - ./bin/docker-run "mix local.rebar --force"
 
 script:
