@@ -2,7 +2,7 @@
 ARGS=$@
 OWNER=raniemi
 PROJECT=elixir_examples
-SRC_DIR=/code
+SRC_DIR=/usr/local/src/elixir_examples
 
 REPOSITORY=$OWNER/$PROJECT
 CONTAINER_HOME=$SRC_DIR/$PROJECT

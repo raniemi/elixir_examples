@@ -32,4 +32,4 @@ ENV ELIXIR_VERSION 1.3.2
 RUN git clone https://github.com/elixir-lang/elixir.git && cd elixir && git checkout v$ELIXIR_VERSION && make
 ENV PATH $PATH:/elixir/bin
 
-WORKDIR /code
+WORKDIR /usr/local/src/elixir_examples
