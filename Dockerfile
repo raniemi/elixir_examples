@@ -1,12 +1,12 @@
 FROM ubuntu:latest
 
+ARG ERLANG_VERSION=18.3.4
+ARG ELIXIR_VERSION=1.3.2
+
 # Based on 
 #  https://github.com/marcelocg/phoenix-docker
 #  https://hub.docker.com/r/jamesbee/phoenix
 MAINTAINER Ross Niemi <dev@lone-cyprus.com>
-
-ARG ERLANG_VERSION=18.3
-ARG ELIXIR_VERSION=1.3.2
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -17,42 +17,30 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # update and install some software requirements
-RUN apt-get update \
- && apt-get upgrade -y \
- && apt-get install -y curl git make build-essential libncurses5-dev openssl libssl-dev fop xsltproc unixodbc-dev \
- && apt-get clean
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+        curl \
+        #wget \
+        #git \
+        #make \
+        lsb-release \
+        #devscripts \
+        libwxgtk3.0-dev \
+        libglu-dev
 
-# Install kerl for managing Erlang installs
-ARG KERL_URL=https://raw.githubusercontent.com/kerl/kerl/master/kerl
-ARG KERL_PATH=/usr/local/bin/kerl
+# Add repository mirror
+ARG ES_MIRROR=https://dl.bintray.com/raniemi/erlang-solutions-unofficial-mirror
+ARG COMPONENTS=contrib
+RUN export DISTRIBUTION=`lsb_release -sc` \
+ && echo "deb $ES_MIRROR $DISTRIBUTION $COMPONENTS" | tee -a /etc/apt/sources.list
 
-RUN curl -o $KERL_PATH $KERL_URL && chmod a+x $KERL_PATH
+# install specific version of Erlang from Erlang Solutions
+RUN export ERLANG_DEB=esl-erlang_$ERLANG_VERSION-1~ubuntu~`lsb_release -sc`_amd64.deb \
+ && curl -L "$ES_MIRROR/$ERLANG_DEB" -o $ERLANG_DEB \
+ && dpkg -i $ERLANG_DEB
 
-# Install Erlang for given ERLANG_VERSION argument
-ARG ERLANG_DIR=/opt/erlang
-
-RUN kerl update releases
-RUN kerl build $ERLANG_VERSION $ERLANG_VERSION
-RUN kerl install $ERLANG_VERSION $ERLANG_DIR/$ERLANG_VERSION
-RUN . $ERLANG_DIR/$ERLANG_VERSION/activate
-
-RUN echo $PATH
-
-# install elixir from source
-ARG ELIXIR_DIR=/opt/elixir
-ARG ELIXIR_GIT_URL=https://github.com/elixir-lang/elixir.git
-
-RUN mkdir -p $ELIXIR_DIR \
- && cd $ELIXIR_DIR \
- && git clone $ELIXIR_GIT_URL $ELIXIR_VERSION \
- && cd $ELIXIR_VERSION \
- && git checkout v$ELIXIR_VERSION \
- && make
-
-ENV PATH $PATH:$ERLANG_DIR/$ERLANG_VERSION:$ELIXIR_DIR/$ELIXIR_VERSION/bin
-
-# print installed version of Erlang
-RUN erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().' -noshell
-RUN elixir --info
+# install specific version of Elixir from Erlang Solutions
+RUN export ELIXIR_DEB=elixir_$ELIXIR_VERSION-1~ubuntu~`lsb_release -sc`_amd64.deb \
+ && curl -L "$ES_MIRROR/$ELIXIR_DEB" -o $ELIXIR_DEB \
+ && dpkg -i $ELIXIR_DEB
 
 WORKDIR /usr/local/src/elixir_examples
